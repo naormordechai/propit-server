@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const todos_1 = __importDefault(require("./routes/todos"));
 const cors_1 = __importDefault(require("cors"));
-const body_parser_1 = __importDefault(require("body-parser"));
+const body_parser_1 = require("body-parser");
 const connect_history_api_fallback_1 = __importDefault(require("connect-history-api-fallback"));
 const path_1 = __importDefault(require("path"));
 const app = express_1.default();
@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8080;
 app.use(cors_1.default({
     origin: ['http://localhost:3000'],
 }));
-app.use(body_parser_1.default.json()); // Must defined above routes defenition!
+app.use(body_parser_1.json()); // Must defined above routes defenition!
 app.use(express_1.default.static('build'));
 app.use('/todos', todos_1.default);
 app.use(connect_history_api_fallback_1.default());

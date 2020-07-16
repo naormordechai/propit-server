@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import todoRoutes from './routes/todos';
 import cors from 'cors';
-import bodyParser from 'body-parser';
+import { json } from 'body-parser';
 import history from 'connect-history-api-fallback';
 import path from 'path';
 
@@ -12,7 +12,7 @@ app.use(cors({
     origin: ['http://localhost:3000'],
 }));
 
-app.use(bodyParser.json()); // Must defined above routes defenition!
+app.use(json()); // Must defined above routes defenition!
 app.use(express.static('build'));
 app.use('/todos', todoRoutes);
 app.use(history());
